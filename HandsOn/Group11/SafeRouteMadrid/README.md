@@ -162,18 +162,6 @@ traffic and so collect more accidents, and the data has no traffic volumes to co
 Passengers who appear before any driver in an accident have no vehicle in the mapping, as in the
 group's RDF, so their injuries do not count toward the severity.
 
-## Notes on the group repository
-
-- **Wrong longitudes in the cleaned CSVs:** `csv/*-updated.csv` has longitudes 6° too far east
-  (+2.2 instead of −3.7), because the OpenRefine UTM formula uses the wrong central meridian.
-  `*-with-links.csv` fixes this with `value - 6`. SafeRoute Madrid converts the coordinates with pyproj
-  instead.
-- **Broken district link in the YARRRML mapping:** `mappings/saferoute.yml` links locations to
-  `District/$(distrito)` (the name), but creates districts as `District/$(cod_distrito)` (the
-  code). SafeRoute Madrid uses the RML with links, which is correct.
-- **Ontology fixes:** SafeRoute Madrid's copy, `ontology/ontology.ttl` (v1.1), uses `owl:Class` and
-  `owl:ObjectProperty` instead of `rdf:Class` and `rdf:Property`, as the Hands-on 1 evaluation
-  asked. It also declares `ns:hasGeometry`, which the mapping uses.
 
 ## Tests
 
